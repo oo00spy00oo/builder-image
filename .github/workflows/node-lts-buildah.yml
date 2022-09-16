@@ -83,9 +83,9 @@ jobs:
       - name: Build and push Docker image
         uses: docker/bake-action@v2
         with:
+          push: ${{ github.event_name != 'pull_request' }}
           files: |
             ./docker-bake.hcl
-            ${{ steps.meta.outputs.bake-file }}
           targets: node-lts-buildah
 
       # Sign the resulting Docker image digest except on PRs.
