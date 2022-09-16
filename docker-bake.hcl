@@ -1,3 +1,5 @@
+target "docker-metadata-action" {}
+
 target "node-lts-buildah" {
   inherits = ["docker-metadata-action"]
   dockerfile = "node-lts-buildah.Dockerfile"
