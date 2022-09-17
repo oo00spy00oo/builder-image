@@ -12,6 +12,7 @@ on:
     branches: [ "main" ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
+    paths: [ "node-lts-buildah.Dockerfile" ]
   pull_request:
     branches: [ "main" ]
 
