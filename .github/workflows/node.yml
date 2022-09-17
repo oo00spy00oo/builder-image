@@ -12,7 +12,7 @@ on:
     branches: [ "main" ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
-    paths: [ "node-lts.Dockerfile" ]
+    paths: [ "node/**" ]
   pull_request:
     branches: [ "main" ]
 
@@ -74,18 +74,20 @@ jobs:
         uses: docker/bake-action@master
         with:
           push: ${{ github.event_name != 'pull_request' }}
-          targets: node-lts
+          files: |
+            node/docker-bake.hcl
+          targets: default
 
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker
       # repository is public to avoid leaking data.  If you would like to publish
       # transparency data even for private images, pass --force to cosign below.
       # https://github.com/sigstore/cosign
-      - name: Sign the published Docker image
-        if: ${{ github.event_name != 'pull_request' }}
-        env:
-          COSIGN_EXPERIMENTAL: "true"
+      #- name: Sign the published Docker image
+      #  if: ${{ github.event_name != 'pull_request' }}
+      #  env:
+      #    COSIGN_EXPERIMENTAL: "true"
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
 #         run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
-        run: echo "${{ steps.build-and-push.outputs.metadata.node-lts.image.name }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.metadata.node-lts.image.digest }}
+      #  run: echo "${{ steps.build-and-push.outputs.metadata.node-lts.image.name }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.metadata.node-lts.image.digest }}
