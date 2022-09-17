@@ -76,7 +76,7 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           files: |
             nx-docker/docker-bake.hcl
-          targets: 16-alpine
+          targets: default
 
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker
