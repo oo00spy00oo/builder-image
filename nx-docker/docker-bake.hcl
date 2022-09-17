@@ -1,3 +1,10 @@
+group "default" {
+  targets = [
+    "16-alpine",
+    "18-alpine"
+  ]
+}
+
 target "docker-metadata-action" {}
 
 target "16-alpine" {
