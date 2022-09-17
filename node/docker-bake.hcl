@@ -13,6 +13,6 @@ target "lts" {
 }
 
 target "lts-buildah" {
-  dockerfile = "node/lts.Dockerfile"
+  dockerfile = "node/lts-buildah.Dockerfile"
   tags = ["ghcr.io/oo00spy00oo/builder-images/node:lts-buildah"]
 }
