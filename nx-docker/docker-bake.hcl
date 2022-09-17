@@ -1,6 +1,6 @@
 group "default" {
   targets = [
-    "lts",
+    "lts-alpine",
     "16-alpine",
     "18-alpine"
   ]
