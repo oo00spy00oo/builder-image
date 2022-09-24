@@ -21,7 +21,7 @@ RUN curl -sSL https://graphql-hive.com/apollo-router-download.sh | sh
 RUN mkdir config schema
 
 # Copy configuration for docker image
-COPY router.yaml config
+COPY router-hive/router.yaml config
 
 # Required so we can copy in libz.so.1
 FROM --platform=linux/amd64 gcr.io/distroless/java17-debian11 as libz-required
@@ -38,9 +38,6 @@ WORKDIR /dist
 
 # Copy in the extracted/created files
 COPY --from=build --chown=root:root /dist .
-
-# Copy configuration for docker image
-# COPY router.yaml /dist/config/router.yaml
 
 ENV APOLLO_ROUTER_CONFIG_PATH="/dist/config/router.yaml"
 
