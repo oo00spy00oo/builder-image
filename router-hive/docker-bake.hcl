@@ -6,5 +6,5 @@ group "default" {
 
 target "latest" {
   dockerfile = "router-hive/latest.Dockerfile"
-  tags = ["ghcr.io/oo00spy00oo/builder-images/router-hive:latest"]
+  tags = ["ghcr.io/oo00spy00oo/builder-images/router-hive:0.16.0"]
 }
