@@ -1,0 +1,23 @@
+#
+# server: Configuration of the HTTP server
+#
+server:
+  # The socket address and port to listen on
+  # (Defaults to 127.0.0.1:4000)
+  listen: 0.0.0.0:4000
+  health_check_path: /health
+  # The exposed endpoint to answer to GraphQL queries
+  # (Defaults to /)
+  # TODO: Remove after v1.0.0
+  endpoint: /graphql
+  cors:
+    allow_any_origin: true
+    # Including this `allow_headers` isn't typically necessary (can be removed) but
+    # will *restrict* the permitted Access-Control-Allow-Headers response values.
+    allow_headers:
+      - Content-Type
+      - Authorization
+
+plugins:
+  experimental.include_subgraph_errors:
+    all: true # propagate errors from all subraphs
