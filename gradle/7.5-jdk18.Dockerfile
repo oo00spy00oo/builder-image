@@ -1,5 +1,5 @@
-FROM gitpod/workspace-full
+FROM gradle:7.5-jdk18
 
-RUN brew install awscli docker-credential-helper-ecr
-COPY gradle/7.5-jdk18.sh .
-RUN bash 7.5-jdk18.sh
+RUN apt-get update
+RUN apt-get install -y awscli amazon-ecr-credential-helper
+RUN apt-get autoclean && apt-get autoremove
