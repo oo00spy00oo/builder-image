@@ -1,5 +1,7 @@
 FROM ubuntu:20.04
 
-RUN apt-get update
-RUN apt-get install -y awscli amazon-ecr-credential-helper jq
-RUN apt-get autoclean && apt-get autoremove
+RUN apt update && apt upgrade -y
+RUN apt install -y curl
+RUN curl -L https://github.com/codeclimate/codeclimate/archive/master.tar.gz | tar xvz
+RUN cd codeclimate-* && make install
+RUN apt autoclean && apt autoremove
