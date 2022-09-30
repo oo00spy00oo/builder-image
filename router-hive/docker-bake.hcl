@@ -1,7 +1,7 @@
 group "default" {
   targets = [
     "latest",
-    "0-16-0"
+    "1-0-0"
   ]
 }
 
@@ -10,7 +10,7 @@ target "latest" {
   tags = ["ghcr.io/oo00spy00oo/builder-images/router-hive:latest"]
 }
 
-target "0-16-0" {
+target "1-0-0" {
   dockerfile = "router-hive/latest.Dockerfile"
-  tags = ["ghcr.io/oo00spy00oo/builder-images/router-hive:0.16.0"]
+  tags = ["ghcr.io/oo00spy00oo/builder-images/router-hive:1.0.0"]
 }
