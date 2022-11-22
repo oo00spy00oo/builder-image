@@ -1,6 +1,7 @@
 group "default" {
   targets = [
     "lts",
+    "lts-alpine",
     "16",
     "18",
     "lts-buildah",
@@ -14,6 +15,11 @@ target "docker-metadata-action" {}
 target "lts" {
   dockerfile = "node/lts.Dockerfile"
   tags = ["ghcr.io/oo00spy00oo/builder-images/node:lts"]
+}
+
+target "lts-alpine" {
+  dockerfile = "node/lts-alpine.Dockerfile"
+  tags = ["ghcr.io/oo00spy00oo/builder-images/node:lts-alpine"]
 }
 
 target "16" {
