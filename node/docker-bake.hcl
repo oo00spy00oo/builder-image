@@ -4,6 +4,7 @@ group "default" {
     "lts-alpine",
     "16",
     "18",
+    "20",
     "lts-buildah",
     "16-buildah",
     "18-buildah"
@@ -30,6 +31,11 @@ target "16" {
 target "18" {
   dockerfile = "node/18.Dockerfile"
   tags = ["ghcr.io/oo00spy00oo/builder-images/node:18"]
+}
+
+target "20" {
+  dockerfile = "node/20.Dockerfile"
+  tags = ["ghcr.io/oo00spy00oo/builder-images/node:20"]
 }
 
 target "lts-buildah" {
